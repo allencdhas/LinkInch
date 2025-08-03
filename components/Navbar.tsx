@@ -3,7 +3,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home, Users, TrendingUp, Settings } from 'lucide-react'
+import { Home, Users, TrendingUp, Settings, Zap } from 'lucide-react'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -13,6 +13,7 @@ export function Navbar() {
     { name: 'Social', href: '/social', icon: Users },
     { name: 'Buy Orders', href: '/buy-orders', icon: TrendingUp },
     { name: 'Sell Orders', href: '/sell-orders', icon: Settings },
+    { name: 'Fusion Plus', href: '/fusion-swap', icon: Zap },
   ]
 
   return (

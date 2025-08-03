@@ -21,15 +21,15 @@ export default function HomePage() {
       href: '/social'
     },
     {
+      icon: Zap,
+      title: 'Fusion Plus',
+      description: 'MEV-protected swaps with gasless transactions',
+      href: '/fusion-swap'
+    },
+    {
       icon: Shield,
       title: 'Secure & Decentralized',
       description: 'Built on Ethereum with industry-leading security',
-      href: '#'
-    },
-    {
-      icon: Zap,
-      title: 'Fast Execution',
-      description: 'Optimized for speed and efficiency',
       href: '#'
     }
   ]
