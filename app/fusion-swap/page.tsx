@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react'
 import { useAccount } from 'wagmi'
 import { ArrowRight, Shield, Zap, Clock, TrendingUp, AlertCircle } from 'lucide-react'
 import { fusionService, FusionQuote } from '@/lib/1inch-fusion'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 
 interface Token {
   address: string
@@ -108,17 +111,19 @@ export default function FusionSwapPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Fusion Plus Swap</h1>
-        <p className="text-gray-600">Advanced trading with MEV protection and gasless transactions</p>
+        <h1 className="text-3xl font-bold text-foreground">Fusion Plus Swap</h1>
+        <p className="text-muted-foreground">Advanced trading with MEV protection and gasless transactions</p>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Swap Form */}
         <div className="lg:col-span-2">
-          <div className="card">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Create Fusion Plus Swap</h2>
-            
-            <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Create Fusion Plus Swap</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
               {/* From Token */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -259,79 +264,92 @@ export default function FusionSwapPage() {
                 </button>
               )}
             </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Info Panel */}
         <div className="space-y-6">
-          <div className="card">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Fusion Plus Benefits</h3>
-            <div className="space-y-3 text-sm text-gray-600">
-              <div className="flex items-start space-x-2">
-                <Shield className="w-5 h-5 text-green-600 mt-0.5" />
-                <div>
-                  <div className="font-medium text-gray-900">MEV Protection</div>
-                  <p>Protected from front-running and sandwich attacks</p>
+          <Card>
+            <CardHeader>
+              <CardTitle>Fusion Plus Benefits</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3 text-sm text-muted-foreground">
+                <div className="flex items-start space-x-2">
+                  <Shield className="w-5 h-5 text-green-500 mt-0.5" />
+                  <div>
+                    <div className="font-medium text-foreground">MEV Protection</div>
+                    <p>Protected from front-running and sandwich attacks</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <Zap className="w-5 h-5 text-blue-500 mt-0.5" />
+                  <div>
+                    <div className="font-medium text-foreground">Gasless Transactions</div>
+                    <p>No gas fees until order executes</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <TrendingUp className="w-5 h-5 text-purple-500 mt-0.5" />
+                  <div>
+                    <div className="font-medium text-foreground">Better Pricing</div>
+                    <p>Access to multiple DEXs for optimal rates</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <Zap className="w-5 h-5 text-blue-600 mt-0.5" />
-                <div>
-                  <div className="font-medium text-gray-900">Gasless Transactions</div>
-                  <p>No gas fees until order executes</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>How it Works</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3 text-sm text-muted-foreground">
+                <div className="flex items-start space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Get a quote with MEV protection</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Sign the order with your wallet</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Order executes automatically with protection</p>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-blue-500/10 border-blue-500/20">
+            <CardContent className="pt-6">
               <div className="flex items-start space-x-2">
-                <TrendingUp className="w-5 h-5 text-purple-600 mt-0.5" />
+                <Clock className="w-5 h-5 text-blue-500 mt-0.5" />
                 <div>
-                  <div className="font-medium text-gray-900">Better Pricing</div>
-                  <p>Access to multiple DEXs for optimal rates</p>
+                  <h3 className="font-medium text-blue-400">Quote Expiry</h3>
+                  <p className="text-sm text-blue-300 mt-1">
+                    Quotes are valid for 5 minutes. Execute quickly to get the best rates.
+                  </p>
                 </div>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
-          <div className="card">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">How it Works</h3>
-            <div className="space-y-3 text-sm text-gray-600">
+          <Card className="bg-yellow-500/10 border-yellow-500/20">
+            <CardContent className="pt-6">
               <div className="flex items-start space-x-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p>Get a quote with MEV protection</p>
+                <AlertCircle className="w-5 h-5 text-yellow-500 mt-0.5" />
+                <div>
+                  <h3 className="font-medium text-yellow-400">Important</h3>
+                  <p className="text-sm text-yellow-300 mt-1">
+                    Fusion Plus provides MEV protection but execution is not guaranteed. Market conditions may affect your swap.
+                  </p>
+                </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p>Sign the order with your wallet</p>
-              </div>
-              <div className="flex items-start space-x-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                <p>Order executes automatically with protection</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-blue-50 border-blue-200">
-            <div className="flex items-start space-x-2">
-              <Clock className="w-5 h-5 text-blue-600 mt-0.5" />
-              <div>
-                <h3 className="font-medium text-blue-800">Quote Expiry</h3>
-                <p className="text-sm text-blue-700 mt-1">
-                  Quotes are valid for 5 minutes. Execute quickly to get the best rates.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="card bg-yellow-50 border-yellow-200">
-            <div className="flex items-start space-x-2">
-              <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
-              <div>
-                <h3 className="font-medium text-yellow-800">Important</h3>
-                <p className="text-sm text-yellow-700 mt-1">
-                  Fusion Plus provides MEV protection but execution is not guaranteed. Market conditions may affect your swap.
-                </p>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

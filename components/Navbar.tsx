@@ -17,13 +17,13 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="bg-white shadow-lg border-b border-gray-200">
+    <nav className="bg-card shadow-lg border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-primary-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SI</span>
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-purple-500 rounded-lg flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-sm">SI</span>
               </div>
               <span className="text-xl font-bold text-gradient">SocialInch</span>
             </Link>
@@ -38,8 +38,8 @@ export function Navbar() {
                     href={item.href}
                     className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
                       isActive
-                        ? 'bg-primary-50 text-primary-600'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
